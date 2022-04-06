@@ -2,6 +2,8 @@ These are the files you need in a new directory, which should be named your proj
 
 `git clone git@github.com:RayNawara/Rails7-Docker.git .`
 
+`chmod +x entrypoint.sh`
+
 Copy these files there. Remember, the .env file has your username and password for Postgresql. Update it!
 
 Then run:
@@ -22,7 +24,15 @@ Then run:
 
 `docker compose run --rm web bin/rails db:setup`
 
-You'll probably need a db:migrate. To run you server just
+You'll probably need a db:migrate. 
+
+`docker compose run --rm web bin/rails db:migrate`
+
+To run the console without the server running use:
+
+`docker compose run --rm web bin/rails c`
+
+To run you server just
 
 `docker compose up`
 
@@ -36,4 +46,4 @@ I needed to add libvips-dev for image processing and I kept getting not found. I
 
 `apt-get update`
 
-`apt-get install libvips-dev`
+`apt-get install -y libvips-dev`
